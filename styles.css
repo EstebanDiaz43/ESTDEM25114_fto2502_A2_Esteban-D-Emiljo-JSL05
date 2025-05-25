@@ -300,43 +300,23 @@ header {
   width: 479px;
   max-width: 50%;
   margin: 0;
+  padding-top: 0px;
 }
 
 .modal-body {
-  padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 20px; /* Space between form elements */
 }
 
-/*#task-modal {
-  display: flex;
-  flex-direction: column;
-  border: 0px solid #e4ebfa;
-  border-radius: 12px;
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  z-index: 1000;
-  transform: translate(-50%, -50%) scale(0);
-  background-color: var(--primary-color);
-  width: 500px;
-  max-width: 70%;
-}
-
-/*.modal1.open {
-  opacity: 1;
-  z-index: 999;
-}
-
 .modal-header {
-  padding: 10px 15px;
+  padding: 0px 0px 10px 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.modal-header .modal-title {
+/*.modal-header .modal-title {
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--primary-font-color);
