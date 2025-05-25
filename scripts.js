@@ -81,6 +81,13 @@ function updateCanban() {
   });
 }
 
+function openAddTaskModal() {
+  // Reset input fields
+  const modal = document.getElementById("task-modal1");
+  if (modal) {
+    modal.showModal();
+  }
+}
 // Adds a new task by asking the user for input.
 // Only allows 'todo', 'doing', or 'done' as status values.
 function addTask() {
@@ -119,6 +126,10 @@ function setUpdateTaskValues(taskId) {
 }
 
 function closeModal() {
+  const addModal = document.getElementById("task-modal1");
+  if (addModal) {
+    addModal.close();
+  }
   const modal = document.getElementById("task-modal");
   if (modal) {
     modal.close();

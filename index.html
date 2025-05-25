@@ -59,7 +59,11 @@
             Launch Career
           </h2>
         </div>
-        <button class="addnewtask-btn" id="addnewtaskbtn" onclick="addTask()">
+        <button
+          class="addnewtask-btn"
+          id="addnewtaskbtn"
+          onclick="openAddTaskModal()"
+        >
           + <span class="addnewtask-btn-text">Add New Task</span>
         </button>
       </header>
@@ -112,19 +116,30 @@
             <option value="done">Done</option>
           </select>
         </div>
-        <button onclick="updateTask()">Update task</button>
+        <div class="modal-footer">
+          <button onclick="updateTask()">Update task</button>
+        </div>
       </dialog>
-      <div>
-        <h1>Create Task</h1>
-        <input id="add-task-title" type="text" />
-        <textarea id="add-task-description" type="text"></textarea>
-        <select id="add-task-status">
-          <option value="todo">Todo</option>
-          <option value="doing">Doing</option>
-          <option value="done">Done</option>
-        </select>
-        <button onclick="addTask()">Create task</button>
-      </div>
+      <dialog id="task-modal1">
+        <div class="modal-header">
+          <h1>Create Task</h1>
+          <input id="add-task-title" type="text" />
+          <button class="close-btn" onclick="closeModal()">×</button>
+        </div>
+        <div>
+          <textarea id="add-task-description" type="text"></textarea>
+        </div>
+        <div>
+          <select id="add-task-status">
+            <option value="todo">Todo</option>
+            <option value="doing">Doing</option>
+            <option value="done">Done</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button onclick="addTask()">Create task</button>
+        </div>
+      </dialog>
     </div>
   </body>
 </html>
