@@ -303,14 +303,29 @@ header {
   padding-top: 0px;
 }
 
+#task-modal1 {
+  flex-direction: column;
+  border: 0px solid #e4ebfa;
+  border-radius: 12px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  transform: translate(-50%, -50%);
+  background-color: var(--primary-color);
+  width: 479px;
+  max-width: 50%;
+  margin: 0;
+  padding-top: 0px;
+}
+
 .modal-body {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Space between form elements */
 }
 
 .modal-header {
-  padding: 0px 0px 10px 0px;
+  padding: 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -321,23 +336,63 @@ header {
   border: 0px solid var(--primary-color);
   color: #ea5555; /* Close button color */
   font-size: 1.5rem;
+  width: 40px;
   cursor: pointer;
 }
 
-/*.modal-header .modal-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--primary-font-color);
+.Section-discription {
+  margin-bottom: 10px; /* Space below description */
+  margin-top: 0px; /* No space above description */
 }
 
-.modal-header #close-modal-btn {
-  font-size: 1.5rem;
-  color: #ea5555;
-  cursor: pointer;
-  background: none;
+.task-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.modal-footer {
+  display: flex;
+}
+
+.savechanges-btn {
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #635fc7; /* Primary button color */
+  color: #fff;
   border: none;
+  border-radius: 100px; /* Pill shape button */
+  height: 40px;
+  width: 164px;
+  padding: 15px 25px 14px 24px;
+  font-size: 0.938rem;
   font-weight: bold;
-}*/
+  cursor: pointer;
+}
+
+#edit-task-title {
+  padding: 10px;
+  font-size: 0.8rem;
+  border: 1px solid #e4ebfa; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+}
+
+#edit-task-description {
+  padding: 10px;
+  font-size: 0.8rem;
+  border: 1px solid #e4ebfa; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+}
+
+#edit-task-status {
+  padding: 10px;
+  font-size: 0.8rem;
+  border: 1px solid #e4ebfa; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+}
 
 /* ===============
      Headings
