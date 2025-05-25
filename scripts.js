@@ -103,14 +103,20 @@ function addTask() {
   const taskDescription = document.getElementById("add-task-description").value;
   const taskStatus = document.getElementById("add-task-status").value;
 
+  // Validate input
   const newTask = {
-    id: initialTasks.length + 1, // Auto-increment ID based on task count
+    id:
+      initialTasks.length > 0
+        ? Math.max(...initialTasks.map((t) => t.id)) + 1
+        : 1,
     title: taskTitle,
     description: taskDescription,
     status: taskStatus,
   };
 
   initialTasks.push(newTask); // Add the task to the array
+
+  saveTasksToLocalStorage(); // <-- Save after adding
 
   updateCanban();
 
@@ -152,6 +158,8 @@ function updateTask() {
     "edit-task-description"
   ).value;
   currentTask.status = document.getElementById("edit-task-status").value;
+
+  saveTasksToLocalStorage(); // <-- Save after editing
 
   updateCanban();
 }
