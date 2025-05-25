@@ -338,6 +338,7 @@ header {
   font-size: 1.5rem;
   width: 40px;
   cursor: pointer;
+  padding-right: 0px;
 }
 
 .Section-discription {
@@ -373,6 +374,23 @@ header {
   cursor: pointer;
 }
 
+.createtask-btn {
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #635fc7; /* Primary button color */
+  color: #fff;
+  border: none;
+  border-radius: 100px; /* Pill shape button */
+  height: 40px;
+  width: 100%;
+  padding: 15px 25px 14px 24px;
+  font-size: 0.938rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 #edit-task-title {
   padding: 10px;
   font-size: 0.8rem;
@@ -388,6 +406,27 @@ header {
 }
 
 #edit-task-status {
+  padding: 10px;
+  font-size: 0.8rem;
+  border: 1px solid #e4ebfa; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+}
+
+#add-task-title {
+  padding: 10px;
+  font-size: 0.8rem;
+  border: 1px solid #e4ebfa; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+}
+
+#add-task-description {
+  padding: 10px;
+  font-size: 0.8rem;
+  border: 1px solid #e4ebfa; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+}
+
+#add-task-status {
   padding: 10px;
   font-size: 0.8rem;
   border: 1px solid #e4ebfa; /* Light border */

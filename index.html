@@ -132,17 +132,19 @@
   <dialog id="task-modal1">
     <div class="modal-body">
     <div class="modal-header">
-      <h3>Create Task</h3>
-      
+      <h3>Add New Task</h3>
       <button class="close-btn" onclick="closeModal()">x</button>
     </div>
-    <div>
+    <div class="task-details">
+      <h4 class="Section-discription">Title</h4>
     <input id="add-task-title" type="text" />
   </div>
-    <div>
-      <textarea id="add-task-description" type="text"></textarea>
+    <div class="task-details">
+      <h4 class="Section-discription">Description</h4>
+      <input id="add-task-description" type="text" />
     </div>
-    <div>
+    <div class="task-details">
+      <h4 class="Section-discription">Status</h4>
       <select id="add-task-status">
         <option value="todo">Todo</option>
         <option value="doing">Doing</option>
@@ -150,7 +152,7 @@
       </select>
     </div>
     <div class="modal-footer">
-      <button onclick="addTask()">Create task</button>
+      <button class="createtask-btn" onclick="addTask()">Create task</button>
     </div>
   </div>
   </dialog>
