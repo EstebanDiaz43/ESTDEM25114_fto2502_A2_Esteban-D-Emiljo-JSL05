@@ -1,97 +1,144 @@
-import { initialTasks } from "./initialData.js";
+const initialTasks = [
+  {
+    id: 1,
+    title: "Launch Epic Career🚀",
+    description: "",
+    status: "todo",
+  },
+  {
+    id: 2,
+    title: "Conquer React⚛️",
+    description: "",
+    status: "todo",
+  },
+  {
+    id: 3,
+    title: "Understand Databases⚙️",
+    description: "",
+    status: "todo",
+  },
+  {
+    id: 4,
+    title: "Crush Frameworks🖼️",
+    description: "",
+    status: "todo",
+  },
+  {
+    id: 5,
+    title: "Master JavaScript💛",
+    description: "",
+    status: "doing",
+  },
+  {
+    id: 6,
+    title: "Never Give Up🏆",
+    description: "",
+    status: "doing",
+  },
+  {
+    id: 7,
+    title: "Explore ES6 Features🚀",
+    description: "",
+    status: "done",
+  },
+  {
+    id: 8,
+    title: "Have fun 🥳",
+    description: "",
+    status: "done",
+  },
+];
 
-/**
- * Creates a single task DOM element.
- * @param {Object} task - Task data object.
- * @param {string} task.title - Title of the task.
- * @param {number} task.id - Unique task ID.
- * @param {string} task.status - Status column: 'todo', 'doing', or 'done'.
- * @returns {HTMLElement} The created task div element.
- */
-function createTaskElement(task) {
-  const taskDiv = document.createElement("div");
-  taskDiv.className = "task-div";
-  taskDiv.textContent = task.title;
-  taskDiv.dataset.taskId = task.id;
+let currentTask;
+var todoDiv = document.getElementById("todo-tasks");
+var doingDiv = document.getElementById("doing-tasks");
+var doneDiv = document.getElementById("done-tasks");
+updateCanban();
 
-  taskDiv.addEventListener("click", () => {
-    openTaskModal(task);
-  });
+// This function updates the canban columns
+function updateCanban() {
+  todoDiv.innerHTML = "";
+  doingDiv.innerHTML = "";
+  doneDiv.innerHTML = "";
 
-  return taskDiv;
-}
+  initialTasks.forEach((task) => {
+    // Create new tasks element
+    const taskDiv = document.createElement("div");
+    taskDiv.className = "task-div";
+    taskDiv.setAttribute("id", task.id);
+    taskDiv.innerText = task.title;
+    taskDiv.onclick = () => {
+      setUpdateTaskValues(taskDiv.getAttribute("id"));
+    };
 
-/**
- * Finds the task container element based on task status.
- * @param {string} status - The task status ('todo', 'doing', or 'done').
- * @returns {HTMLElement|null} The container element, or null if not found.
- */
-function getTaskContainerByStatus(status) {
-  const column = document.querySelector(`.column-div[data-status="${status}"]`);
-  return column ? column.querySelector(".tasks-container") : null;
-}
-
-/**
- * Clears all existing task-divs from all task containers.
- */
-function clearExistingTasks() {
-  document.querySelectorAll(".tasks-container").forEach((container) => {
-    container.innerHTML = "";
-  });
-}
-
-/**
- * Renders all tasks from initial data to the UI.
- * Groups tasks by status and appends them to their respective columns.
- * @param {Array<Object>} tasks - Array of task objects.
- */
-function renderTasks(tasks) {
-  tasks.forEach((task) => {
-    const container = getTaskContainerByStatus(task.status);
-    if (container) {
-      const taskElement = createTaskElement(task);
-      container.appendChild(taskElement);
+    if (task.status === "todo") {
+      todoDiv.appendChild(taskDiv);
+    } else if (task.status === "doing") {
+      doingDiv.appendChild(taskDiv);
+    } else if (task.status === "done") {
+      doneDiv.appendChild(taskDiv);
     }
   });
 }
 
-/**
- * Opens the modal dialog with pre-filled task details.
- * @param {Object} task - The task object to display in the modal.
- */
-function openTaskModal(task) {
-  const modal = document.getElementById("task-modal");
-  const titleInput = document.getElementById("task-title");
-  const descInput = document.getElementById("task-desc");
-  const statusSelect = document.getElementById("task-status");
+// Adds a new task by asking the user for input.
+// Only allows 'todo', 'doing', or 'done' as status values.
+function addTask() {
+  const taskTitle = document.getElementById("add-task-title").value;
+  const taskDescription = document.getElementById("add-task-description").value;
+  const taskStatus = document.getElementById("add-task-status").value;
 
-  titleInput.value = task.title;
-  descInput.value = task.description;
-  statusSelect.value = task.status;
+  const newTask = {
+    id: initialTasks.length + 1, // Auto-increment ID based on task count
+    title: taskTitle,
+    description: taskDescription,
+    status: taskStatus,
+  };
 
-  modal.showModal();
+  initialTasks.push(newTask); // Add the task to the array
+
+  updateCanban();
+
+  document.getElementById("add-task-title").value = "";
+  document.getElementById("add-task-description").value = "";
+  document.getElementById("add-task-status").value = "todo";
 }
 
-/**
- * Sets up modal close behavior.
- */
-function setupModalCloseHandler() {
+function setUpdateTaskValues(taskId) {
+  currentTask = initialTasks.find((task) => task.id === +taskId);
+  console.log(currentTask);
+  document.getElementById("edit-task-title").value = currentTask.title;
+  document.getElementById("edit-task-description").value =
+    currentTask.description;
+  document.getElementById("edit-task-status").value = currentTask.status;
+  // Open modal
   const modal = document.getElementById("task-modal");
-  const closeBtn = document.getElementById("close-modal-btn");
+  if (modal) {
+    modal.showModal();
+  }
+}
 
-  closeBtn.addEventListener("click", () => {
+function closeModal() {
+  const modal = document.getElementById("task-modal");
+  if (modal) {
     modal.close();
-  });
+  }
 }
 
-/**
- * Initializes the task board and modal handlers.
- */
-function initTaskBoard() {
-  clearExistingTasks();
-  renderTasks(initialTasks);
-  setupModalCloseHandler();
+function updateTask() {
+  currentTask.title = document.getElementById("edit-task-title").value;
+  currentTask.description = document.getElementById(
+    "edit-task-description"
+  ).value;
+  currentTask.status = document.getElementById("edit-task-status").value;
+
+  updateCanban();
 }
 
-// Wait until DOM is fully loaded
-document.addEventListener("DOMContentLoaded", initTaskBoard);
+// Keep adding tasks until there are 6 in total
+const getCompletedTasks = () =>
+  initialTasks.filter((task) => task.status === "done");
+
+// Display tasks in the console
+console.log("All tasks: ", initialTasks);
+console.log("Completed tasks: ", getCompletedTasks());

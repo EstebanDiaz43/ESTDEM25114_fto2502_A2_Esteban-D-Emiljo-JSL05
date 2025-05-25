@@ -84,6 +84,69 @@ h4 {
   overflow: hidden; /* Prevents overflowed text/icons from showing */
 }
 
+.board-toggle-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0%; /* Position at the bottom of sidebar */
+}
+
+.toggleswitch-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #f4f7fd;
+  border: none;
+  border-radius: 6px;
+  height: 48px;
+  width: 251px;
+  margin: 0px auto 20px 16px;
+  padding: 0px 64px 0px 64px;
+  font-size: 0.9375rem;
+}
+
+.toggleswitch-btn {
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  background-color: #635fc7;
+  border: none;
+  border-radius: 12px;
+  height: 20px;
+  width: 40px;
+  padding: 0px 5px 0px 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.toggleswitch-btn-circle {
+  background-color: #fff;
+  border-radius: 50%; /* Make it circular */
+  height: 14px;
+  width: 14px;
+  transition: all 0.3s ease; /* Smooth transition for toggle */
+}
+
+.sidebar-btn {
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+  background-color: #635fc7;
+  color: #fff;
+  border: none;
+  border-radius: 0 100px 100px 0; /* Pill shape only on right side */
+  height: 48px;
+  width: 276px;
+  padding: 28px 12px 28px 50px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
 /* ===============
      Main Layout
   ================ */
@@ -117,6 +180,23 @@ header {
 
 .logo-mobile {
   display: none; /* Hidden on desktop; shown on smaller screens */
+}
+
+.addnewtask-btn {
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  background-color: #635fc7;
+  color: #fff;
+  border: none;
+  border-radius: 100px; /* Pill shape button */
+  height: 48px;
+  width: 164px;
+  padding: 15px 25px 14px 24px;
+  font-size: 0.938rem;
+  font-weight: 700;
+  cursor: pointer;
+  overflow: hidden; /* Prevents overflowed text/icons from showing */
 }
 
 /* ===============
@@ -203,107 +283,59 @@ header {
   font-weight: bold;
 }
 
+/*================
+     Edit Task Modal
+  ================ */
+
+/*#modal1 {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out; 
+  border: 0px solid #e4ebfa;
+  border-radius: 12px;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  z-index: 1000;
+  transform: translate(-50%, -50%) scale(0);
+  background-color: var(--primary-color);
+  width: 500px;
+  max-width: 70%;
+}
+
+.modal1.open {
+  opacity: 1;
+  z-index: 999;
+}
+
+.modal-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header .modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-font-color);
+}
+
+.modal-header #close-modal-btn {
+  font-size: 1.5rem;
+  color: #ea5555;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-weight: bold;
+}*/
+
 /* ===============
      Headings
   ================ */
 h2 {
   font-size: 1.5rem;
   margin: 0;
-}
-
-/* ===============
-     Modal Styles
-  ================ */
-/* Remove default dialog styles */
-dialog {
-  position: fixed;
-
-  border: none;
-  padding: 0;
-  margin: 0;
-  background: none;
-}
-
-/* Style the modal box */
-#task-modal::backdrop {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-#task-modal {
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -40%);
-  border-radius: 8px;
-  width: 90%;
-  max-width: 600px;
-  padding: 24px;
-  background-color: #fff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  /*font-family: "Plus Jakarta Sans", sans-serif;*/
-}
-
-/* Header */
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.modal-header h3 {
-  margin: 0;
-  font-size: 1.125rem;
-}
-
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 2.5rem;
-  line-height: 1;
-  cursor: pointer;
-  color: #ea5555;
-  transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
-  transition-delay: 0.1s; /* Delay before scaling */
-}
-
-.close-btn:hover {
-  transform: scale(1.15);
-  font-weight: 600;
-}
-
-.close-btn:focus {
-  outline: none;
-}
-
-/* Form elements */
-form label {
-  display: block;
-  font-weight: 600;
-  font-size: 0.75em;
-  margin-top: 12px;
-  margin-bottom: 4px;
-  color: #828fa3;
-}
-
-form input,
-form textarea,
-form select {
-  width: 100%;
-  padding: 8px 10px;
-  border: 1px solid #828fa3;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 0.8125em;
-  resize: vertical;
-}
-
-form select {
-  appearance: none; /* Remove native arrow */
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="%23828FA3" stroke-width="3" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>')
-    no-repeat right 0.75rem center;
-
-  background-size: 1.4rem;
-  padding-right: 1rem;
 }
 
 /* ========================
@@ -398,5 +430,31 @@ form select {
 
   .column-div {
     padding: 24px;
+  }
+
+  #header-board-name {
+    display: none; /* Hide board name on mobile */
+  }
+
+  .addnewtask-btn {
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #635fc7;
+    color: #fff;
+    border: none;
+    border-radius: 100px; /* Pill shape button */
+    height: 33px;
+    width: 33px;
+    padding: 10px 10px 12px 10px;
+    font-size: 0.938rem;
+    font-weight: 700;
+    cursor: pointer;
+    overflow: hidden; /* Prevents overflowed text/icons from showing */
+  }
+
+  .addnewtask-btn-text {
+    display: none; /* Hidden on smallscreens; shown on desktop */
   }
 }
