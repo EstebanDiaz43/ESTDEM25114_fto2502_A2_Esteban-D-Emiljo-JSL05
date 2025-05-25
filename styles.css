@@ -316,6 +316,14 @@ header {
   align-items: center;
 }
 
+.close-btn {
+  background-color: var(--primary-color);
+  border: 0px solid var(--primary-color);
+  color: #ea5555; /* Close button color */
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 /*.modal-header .modal-title {
   font-size: 1.5rem;
   font-weight: bold;
