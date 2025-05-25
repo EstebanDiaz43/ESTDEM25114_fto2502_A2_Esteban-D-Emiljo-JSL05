@@ -287,10 +287,24 @@ header {
      Edit Task Modal
   ================ */
 
-/*#modal1 {
+#task-modal {
+  flex-direction: column;
+  border: 0px solid #e4ebfa;
+  border-radius: 12px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  transform: translate(-50%, -50%);
+  background-color: var(--primary-color);
+  width: 479px;
+  max-width: 50%;
+  margin: 0;
+}
+
+/*#task-modal {
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease-in-out; 
   border: 0px solid #e4ebfa;
   border-radius: 12px;
   position: fixed;
@@ -303,7 +317,7 @@ header {
   max-width: 70%;
 }
 
-.modal1.open {
+/*.modal1.open {
   opacity: 1;
   z-index: 999;
 }

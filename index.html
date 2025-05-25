@@ -99,47 +99,48 @@
           </div>
         </main>
       </div>
-
-      <dialog id="task-modal">
-        <div class="modal-header">
-          <h1>Update Task</h1>
-          <input id="edit-task-title" type="text" />
-          <button class="close-btn" onclick="closeModal()">×</button>
-        </div>
-        <div>
-          <textarea id="edit-task-description" type="text"></textarea>
-        </div>
-        <div>
-          <select id="edit-task-status">
-            <option value="todo">Todo</option>
-            <option value="doing">Doing</option>
-            <option value="done">Done</option>
-          </select>
-        </div>
-        <div class="modal-footer">
-          <button onclick="updateTask()">Update task</button>
-        </div>
-      </dialog>
-      <dialog id="task-modal1">
-        <div class="modal-header">
-          <h1>Create Task</h1>
-          <input id="add-task-title" type="text" />
-          <button class="close-btn" onclick="closeModal()">×</button>
-        </div>
-        <div>
-          <textarea id="add-task-description" type="text"></textarea>
-        </div>
-        <div>
-          <select id="add-task-status">
-            <option value="todo">Todo</option>
-            <option value="doing">Doing</option>
-            <option value="done">Done</option>
-          </select>
-        </div>
-        <div class="modal-footer">
-          <button onclick="addTask()">Create task</button>
-        </div>
-      </dialog>
     </div>
   </body>
+  <dialog id="task-modal">
+    <div class="modal-body">
+      <div class="modal-header">
+        <h1>Update Task</h1>
+        <input id="edit-task-title" type="text" />
+        <button class="close-btn" onclick="closeModal()">×</button>
+      </div>
+      <div>
+        <textarea id="edit-task-description" type="text"></textarea>
+      </div>
+      <div>
+        <select id="edit-task-status">
+          <option value="todo">Todo</option>
+          <option value="doing">Doing</option>
+          <option value="done">Done</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button onclick="updateTask()">Update task</button>
+      </div>
+    </div>
+  </dialog>
+  <dialog id="task-modal1">
+    <div class="modal-header">
+      <h1>Create Task</h1>
+      <input id="add-task-title" type="text" />
+      <button class="close-btn" onclick="closeModal()">×</button>
+    </div>
+    <div>
+      <textarea id="add-task-description" type="text"></textarea>
+    </div>
+    <div>
+      <select id="add-task-status">
+        <option value="todo">Todo</option>
+        <option value="doing">Doing</option>
+        <option value="done">Done</option>
+      </select>
+    </div>
+    <div class="modal-footer">
+      <button onclick="addTask()">Create task</button>
+    </div>
+  </dialog>
 </html>

@@ -134,6 +134,8 @@ function closeModal() {
   if (modal) {
     modal.close();
   }
+  console.log("All tasks: ", initialTasks);
+  console.log("Completed tasks: ", getCompletedTasks());
 }
 
 function updateTask() {
