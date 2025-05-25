@@ -1,4 +1,6 @@
-// Load tasks from localStorage or use default
+/**
+ * Default tasks to use if no tasks are found in localStorage.
+ */
 const defaultTasks = [
   {
     id: 1,
@@ -50,6 +52,9 @@ const defaultTasks = [
   },
 ];
 
+/**
+ * The main array holding all tasks.
+ */
 let initialTasks = [];
 if (localStorage.getItem("kanbanTasks")) {
   initialTasks = JSON.parse(localStorage.getItem("kanbanTasks"));
@@ -63,14 +68,19 @@ var doingDiv = document.getElementById("doing-tasks");
 var doneDiv = document.getElementById("done-tasks");
 updateCanban();
 
-// This function updates the canban columns
+/**
+ * Updates the Kanban columns with the current tasks.
+ * Clears and repopulates the columns based on task status.
+ */
 function updateCanban() {
   todoDiv.innerHTML = "";
   doingDiv.innerHTML = "";
   doneDiv.innerHTML = "";
 
   initialTasks.forEach((task) => {
-    // Create new tasks element
+    /**
+     * Create new tasks element
+     */
     const taskDiv = document.createElement("div");
     taskDiv.className = "task-div";
     taskDiv.setAttribute("id", task.id);
@@ -89,21 +99,30 @@ function updateCanban() {
   });
 }
 
+/**
+ * Opens the modal dialog for adding a new task.
+ */
 function openAddTaskModal() {
-  // Reset input fields
+  /**
+   * Reset input fields.
+   */
   const modal = document.getElementById("task-modal1");
   if (modal) {
     modal.showModal();
   }
 }
-// Adds a new task by asking the user for input.
-// Only allows 'todo', 'doing', or 'done' as status values.
+
+/**
+ * Adds a new task to the task list and updates storage and UI.
+ */
 function addTask() {
   const taskTitle = document.getElementById("add-task-title").value;
   const taskDescription = document.getElementById("add-task-description").value;
   const taskStatus = document.getElementById("add-task-status").value;
 
-  // Validate input
+  /**
+   * Validate input.
+   */
   const newTask = {
     id:
       initialTasks.length > 0
@@ -114,9 +133,9 @@ function addTask() {
     status: taskStatus,
   };
 
-  initialTasks.push(newTask); // Add the task to the array
+  initialTasks.push(newTask); /*Add the task to the array*/
 
-  saveTasksToLocalStorage(); // <-- Save after adding
+  saveTasksToLocalStorage(); /* Save after adding*/
 
   updateCanban();
 
@@ -125,6 +144,9 @@ function addTask() {
   document.getElementById("add-task-status").value = "todo";
 }
 
+/**
+ * Sets the values in the edit modal for the selected task.
+ */
 function setUpdateTaskValues(taskId) {
   currentTask = initialTasks.find((task) => task.id === +taskId);
   console.log(currentTask);
@@ -132,13 +154,16 @@ function setUpdateTaskValues(taskId) {
   document.getElementById("edit-task-description").value =
     currentTask.description;
   document.getElementById("edit-task-status").value = currentTask.status;
-  // Open modal
+  /*Open modal.*/
   const modal = document.getElementById("task-modal");
   if (modal) {
     modal.showModal();
   }
 }
 
+/**
+ * Closes both the add and edit modals.
+ */
 function closeModal() {
   const addModal = document.getElementById("task-modal1");
   if (addModal) {
@@ -152,6 +177,10 @@ function closeModal() {
   console.log("Completed tasks: ", getCompletedTasks());
 }
 
+/**
+ * Updates the current task with values from the edit modal,
+ * saves to localStorage, and updates the UI.
+ */
 function updateTask() {
   currentTask.title = document.getElementById("edit-task-title").value;
   currentTask.description = document.getElementById(
@@ -159,20 +188,26 @@ function updateTask() {
   ).value;
   currentTask.status = document.getElementById("edit-task-status").value;
 
-  saveTasksToLocalStorage(); // <-- Save after editing
+  saveTasksToLocalStorage(); /*Save after editing.*/
 
   updateCanban();
 }
 
-// Keep adding tasks until there are 6 in total
+/**
+ * Returns all tasks with status 'done'.
+ */
 const getCompletedTasks = () =>
   initialTasks.filter((task) => task.status === "done");
 
-// Display tasks in the console
+/**
+ * Display tasks in the console
+ */
 console.log("All tasks: ", initialTasks);
 console.log("Completed tasks: ", getCompletedTasks());
 
-// Save tasks to localStorage
+/**
+ * Saves the current tasks array to localStorage.
+ */
 function saveTasksToLocalStorage() {
   localStorage.setItem("kanbanTasks", JSON.stringify(initialTasks));
 }
