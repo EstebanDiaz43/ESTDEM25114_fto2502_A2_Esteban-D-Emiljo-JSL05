@@ -126,7 +126,11 @@ function setUpdateTaskValues(taskId) {
 }
 
 function closeModal() {
-  const modal = document.getElementById("task-modal");
+  const addModal = document.getElementById("task-modal1");
+  if (addModal) {
+    addModal.close();
+  }
+  const modal = document.getElementById("task-modal" || "task-modal1");
   if (modal) {
     modal.close();
   }
