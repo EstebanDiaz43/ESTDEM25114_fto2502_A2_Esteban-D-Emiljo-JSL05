@@ -163,3 +163,8 @@ const getCompletedTasks = () =>
 // Display tasks in the console
 console.log("All tasks: ", initialTasks);
 console.log("Completed tasks: ", getCompletedTasks());
+
+// Save tasks to localStorage
+function saveTasksToLocalStorage() {
+  localStorage.setItem("kanbanTasks", JSON.stringify(initialTasks));
+}
