@@ -1,4 +1,5 @@
-const initialTasks = [
+// Load tasks from localStorage or use default
+const defaultTasks = [
   {
     id: 1,
     title: "Launch Epic Career🚀",
@@ -48,6 +49,13 @@ const initialTasks = [
     status: "done",
   },
 ];
+
+let initialTasks = [];
+if (localStorage.getItem("kanbanTasks")) {
+  initialTasks = JSON.parse(localStorage.getItem("kanbanTasks"));
+} else {
+  initialTasks = defaultTasks;
+}
 
 let currentTask;
 var todoDiv = document.getElementById("todo-tasks");
